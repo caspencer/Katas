@@ -14,8 +14,8 @@ namespace Algorithm.Test
 
             var result = finder.Find(FindType.ClosestInAge);
 
-            Assert.Null(result.Person1);
-            Assert.Null(result.Person2);
+            Assert.Null(result.OlderPerson);
+            Assert.Null(result.YoungerPerson);
         }
 
         [Fact]
@@ -26,8 +26,8 @@ namespace Algorithm.Test
 
             var result = finder.Find(FindType.ClosestInAge);
 
-            Assert.Null(result.Person1);
-            Assert.Null(result.Person2);
+            Assert.Null(result.OlderPerson);
+            Assert.Null(result.YoungerPerson);
         }
 
         [Fact]
@@ -38,8 +38,8 @@ namespace Algorithm.Test
 
             var result = finder.Find(FindType.ClosestInAge);
 
-            Assert.Same(sue, result.Person1);
-            Assert.Same(greg, result.Person2);
+            Assert.Same(sue, result.OlderPerson);
+            Assert.Same(greg, result.YoungerPerson);
         }
 
         [Fact]
@@ -50,8 +50,8 @@ namespace Algorithm.Test
 
             var result = finder.Find(FindType.FurthestInAge);
 
-            Assert.Same(greg, result.Person1);
-            Assert.Same(mike, result.Person2);
+            Assert.Same(greg, result.OlderPerson);
+            Assert.Same(mike, result.YoungerPerson);
         }
 
         [Fact]
@@ -62,8 +62,8 @@ namespace Algorithm.Test
 
             var result = finder.Find(FindType.FurthestInAge);
 
-            Assert.Same(sue, result.Person1);
-            Assert.Same(sarah, result.Person2);
+            Assert.Same(sue, result.OlderPerson);
+            Assert.Same(sarah, result.YoungerPerson);
         }
 
         [Fact]
@@ -74,8 +74,8 @@ namespace Algorithm.Test
 
             var result = finder.Find(FindType.ClosestInAge);
 
-            Assert.Same(sue, result.Person1);
-            Assert.Same(greg, result.Person2);
+            Assert.Same(sue, result.OlderPerson);
+            Assert.Same(greg, result.YoungerPerson);
         }
 
         Person sue = new Person() {Name = "Sue", BirthDate = new DateTime(1950, 1, 1)};

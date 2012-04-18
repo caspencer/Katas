@@ -23,26 +23,26 @@ namespace Algorithm
                 {
                     if (person1 == person2) continue;
 
-                    var r = new FindResult();
+                    var result = new FindResult();
 
                     if (person1.BirthDate < person2.BirthDate)
                     {
-                        r.Person1 = person1;
-                        r.Person2 = person2;
+                        result.OlderPerson = person1;
+                        result.YoungerPerson = person2;
                     }
                     else
                     {
-                        r.Person1 = person2;
-                        r.Person2 = person1;
+                        result.OlderPerson = person2;
+                        result.YoungerPerson = person1;
                     }
 
-                    r.AgeDifference = r.Person2.BirthDate - r.Person1.BirthDate;
+                    result.AgeDifference = result.YoungerPerson.BirthDate - result.OlderPerson.BirthDate;
 
-                    if (furthest == null || r.AgeDifference > furthest.AgeDifference)
-                        furthest = r;
+                    if (furthest == null || result.AgeDifference > furthest.AgeDifference)
+                        furthest = result;
 
-                    if (closest == null || r.AgeDifference < closest.AgeDifference)
-                        closest = r;
+                    if (closest == null || result.AgeDifference < closest.AgeDifference)
+                        closest = result;
 
                     resultCount++;
                 }
