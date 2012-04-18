@@ -21,22 +21,10 @@ namespace Algorithm
             {
                 foreach (var person2 in _personList)
                 {
+                    // don't compare person to itself
                     if (person1 == person2) continue;
 
-                    var result = new FindResult();
-
-                    if (person1.BirthDate < person2.BirthDate)
-                    {
-                        result.OlderPerson = person1;
-                        result.YoungerPerson = person2;
-                    }
-                    else
-                    {
-                        result.OlderPerson = person2;
-                        result.YoungerPerson = person1;
-                    }
-
-                    result.AgeDifference = result.YoungerPerson.BirthDate - result.OlderPerson.BirthDate;
+                    var result = FindResult.Compare(person1, person2);
 
                     if (furthest == null || result.AgeDifference > furthest.AgeDifference)
                         furthest = result;
