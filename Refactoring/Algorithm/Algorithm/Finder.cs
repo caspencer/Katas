@@ -11,7 +11,7 @@ namespace Algorithm
             _personList = personList;
         }
 
-        public F Find(FT ft)
+        public F Find(FindType ft)
         {
             var tr = new List<F>();
 
@@ -47,14 +47,14 @@ namespace Algorithm
             {
                 switch(ft)
                 {
-                    case FT.One:
+                    case FindType.ClosestInAge:
                         if(result.AgeDifference < answer.AgeDifference)
                         {
                             answer = result;
                         }
                         break;
 
-                    case FT.Two:
+                    case FindType.FurthestInAge:
                         if(result.AgeDifference > answer.AgeDifference)
                         {
                             answer = result;
