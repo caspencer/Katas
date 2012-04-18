@@ -14,6 +14,8 @@ namespace Algorithm
         public FindResult Find(FindType findType)
         {
             var tr = new List<FindResult>();
+            FindResult closest = null;
+            FindResult furthest = null;
             
             foreach (var person1 in _personList)
             {
@@ -34,6 +36,12 @@ namespace Algorithm
                     }
                     r.AgeDifference = r.Person2.BirthDate - r.Person1.BirthDate;
                     tr.Add(r);
+
+                    if (furthest == null || r.AgeDifference > furthest.AgeDifference)
+                        furthest = r;
+
+                    if (closest == null || r.AgeDifference < closest.AgeDifference)
+                        closest = r;
                 }
             }
 
@@ -42,28 +50,7 @@ namespace Algorithm
                 return new FindResult();
             }
 
-            FindResult answer = tr[0];
-            foreach(var result in tr)
-            {
-                switch(findType)
-                {
-                    case FindType.ClosestInAge:
-                        if(result.AgeDifference < answer.AgeDifference)
-                        {
-                            answer = result;
-                        }
-                        break;
-
-                    case FindType.FurthestInAge:
-                        if(result.AgeDifference > answer.AgeDifference)
-                        {
-                            answer = result;
-                        }
-                        break;
-                }
-            }
-
-            return answer;
+            return (findType == FindType.ClosestInAge) ? closest : furthest;
         }
     }
 }
