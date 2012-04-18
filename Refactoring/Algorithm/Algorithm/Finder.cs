@@ -11,17 +11,17 @@ namespace Algorithm
             _personList = personList;
         }
 
-        public F Find(FindType ft)
+        public FindResult Find(FindType findType)
         {
-            var tr = new List<F>();
-
+            var tr = new List<FindResult>();
+            
             foreach (var person1 in _personList)
             {
                 foreach (var person2 in _personList)
                 {
                     if (person1 == person2) continue;
 
-                    var r = new F();
+                    var r = new FindResult();
                     if (person1.BirthDate < person2.BirthDate)
                     {
                         r.Person1 = person1;
@@ -39,13 +39,13 @@ namespace Algorithm
 
             if(tr.Count < 1)
             {
-                return new F();
+                return new FindResult();
             }
 
-            F answer = tr[0];
+            FindResult answer = tr[0];
             foreach(var result in tr)
             {
-                switch(ft)
+                switch(findType)
                 {
                     case FindType.ClosestInAge:
                         if(result.AgeDifference < answer.AgeDifference)
