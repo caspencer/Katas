@@ -4,33 +4,33 @@ namespace Algorithm
 {
     public class Finder
     {
-        private readonly List<Person> _p;
+        private readonly List<Person> _personList;
 
-        public Finder(List<Person> p)
+        public Finder(List<Person> personList)
         {
-            _p = p;
+            _personList = personList;
         }
 
         public F Find(FT ft)
         {
             var tr = new List<F>();
 
-            foreach (var thing1 in _p)
+            foreach (var person1 in _personList)
             {
-                foreach (var thing2 in _p)
+                foreach (var person2 in _personList)
                 {
-                    if (thing1 == thing2) continue;
+                    if (person1 == person2) continue;
 
                     var r = new F();
-                    if (thing1.BirthDate < thing2.BirthDate)
+                    if (person1.BirthDate < person2.BirthDate)
                     {
-                        r.P1 = thing1;
-                        r.P2 = thing2;
+                        r.P1 = person1;
+                        r.P2 = person2;
                     }
                     else
                     {
-                        r.P1 = thing2;
-                        r.P2 = thing1;
+                        r.P1 = person2;
+                        r.P2 = person1;
                     }
                     r.D = r.P2.BirthDate - r.P1.BirthDate;
                     tr.Add(r);
