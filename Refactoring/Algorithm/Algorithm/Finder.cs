@@ -13,7 +13,7 @@ namespace Algorithm
 
         public FindResult Find(FindType findType)
         {
-            var tr = new List<FindResult>();
+            int resultCount = 0;
             FindResult closest = null;
             FindResult furthest = null;
             
@@ -24,6 +24,7 @@ namespace Algorithm
                     if (person1 == person2) continue;
 
                     var r = new FindResult();
+
                     if (person1.BirthDate < person2.BirthDate)
                     {
                         r.Person1 = person1;
@@ -34,22 +35,22 @@ namespace Algorithm
                         r.Person1 = person2;
                         r.Person2 = person1;
                     }
+
                     r.AgeDifference = r.Person2.BirthDate - r.Person1.BirthDate;
-                    tr.Add(r);
 
                     if (furthest == null || r.AgeDifference > furthest.AgeDifference)
                         furthest = r;
 
                     if (closest == null || r.AgeDifference < closest.AgeDifference)
                         closest = r;
+
+                    resultCount++;
                 }
             }
 
-            if(tr.Count < 1)
-            {
+            if (resultCount < 1)
                 return new FindResult();
-            }
-
+            
             return (findType == FindType.ClosestInAge) ? closest : furthest;
         }
     }
