@@ -24,15 +24,15 @@ namespace Algorithm
                     var r = new F();
                     if (person1.BirthDate < person2.BirthDate)
                     {
-                        r.P1 = person1;
-                        r.P2 = person2;
+                        r.Person1 = person1;
+                        r.Person2 = person2;
                     }
                     else
                     {
-                        r.P1 = person2;
-                        r.P2 = person1;
+                        r.Person1 = person2;
+                        r.Person2 = person1;
                     }
-                    r.D = r.P2.BirthDate - r.P1.BirthDate;
+                    r.AgeDifference = r.Person2.BirthDate - r.Person1.BirthDate;
                     tr.Add(r);
                 }
             }
@@ -48,14 +48,14 @@ namespace Algorithm
                 switch(ft)
                 {
                     case FT.One:
-                        if(result.D < answer.D)
+                        if(result.AgeDifference < answer.AgeDifference)
                         {
                             answer = result;
                         }
                         break;
 
                     case FT.Two:
-                        if(result.D > answer.D)
+                        if(result.AgeDifference > answer.AgeDifference)
                         {
                             answer = result;
                         }
