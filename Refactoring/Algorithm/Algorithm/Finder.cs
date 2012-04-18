@@ -15,20 +15,22 @@ namespace Algorithm
         {
             var tr = new List<F>();
 
-            for(var i = 0; i < _p.Count - 1; i++)
+            foreach (var thing1 in _p)
             {
-                for(var j = i + 1; j < _p.Count; j++)
+                foreach (var thing2 in _p)
                 {
+                    if (thing1 == thing2) continue;
+
                     var r = new F();
-                    if(_p[i].BirthDate < _p[j].BirthDate)
+                    if (thing1.BirthDate < thing2.BirthDate)
                     {
-                        r.P1 = _p[i];
-                        r.P2 = _p[j];
+                        r.P1 = thing1;
+                        r.P2 = thing2;
                     }
                     else
                     {
-                        r.P1 = _p[j];
-                        r.P2 = _p[i];
+                        r.P1 = thing2;
+                        r.P2 = thing1;
                     }
                     r.D = r.P2.BirthDate - r.P1.BirthDate;
                     tr.Add(r);
